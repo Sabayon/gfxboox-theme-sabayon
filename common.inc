@@ -366,14 +366,14 @@
       config.keymap .km.name get
       dup "_" strstr dup 0 eq {
         pop
-        "console-setup/layoutcode=%s " bc.cmd dup length add sprintf
+        "vconsole.keymap=%s " bc.cmd dup length add sprintf
       } {
         over over 1 sub 0 put
-        over "console-setup/layoutcode=%s " bc.cmd dup length add sprintf
-        add "console-setup/variantcode=%s " bc.cmd dup length add sprintf
+        over "vconsole.keymap=%s " bc.cmd dup length add sprintf
+        add "vconsole.keymap.variant=%s " bc.cmd dup length add sprintf
       } ifelse
       config.keymap .km.model get dup {
-        "console-setup/modelcode=%s " bc.cmd dup length add sprintf
+        "vconsole.keymap.model=%s " bc.cmd dup length add sprintf
       } {
         pop
       } ifelse
