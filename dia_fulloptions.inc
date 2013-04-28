@@ -15,9 +15,9 @@
 /.fulloptions.nodmraid 5 def
 /.fulloptions.nomodeset 6 def
 /.fulloptions.systemd 7 def
-/.fulloptions.free 8 def
 
 % These strings are intentionally not translatable.
+/txt_expert "verbose debug" def
 /txt_acpi_off "acpi=off" def
 /txt_noapic "noapic" def
 /txt_nolapic "nolapic" def
@@ -51,8 +51,7 @@
   } ifelse
 
   xmenu .xm_list [
-    % is_live not { /txt_expert_mode } if
-    /txt_acpi_off /txt_noapic /txt_nolapic /txt_edd_on /txt_nodmraid
+    /txt_expert /txt_acpi_off /txt_noapic /txt_nolapic /txt_edd_on /txt_nodmraid
     /txt_nomodeset /txt_systemd
   ] put
 
@@ -81,7 +80,7 @@
   0 1 xmenu .xm_allselected get length 1 sub {
     over over get {
       .undef
-      is_live not { over .fulloptions.expert eq { pop "priority=low" } if } if
+      over .fulloptions.expert eq { pop "verbose debug" } if
       over .fulloptions.acpi_off eq { pop "acpi=off" } if
       over .fulloptions.noapic eq { pop "noapic" } if
       over .fulloptions.nolapic eq { pop "nolapic" } if
@@ -89,7 +88,6 @@
       over .fulloptions.nodmraid eq { pop "nodmraid" } if
       over .fulloptions.nomodeset eq { pop "nomodeset" } if
       over .fulloptions.systemd eq { pop "real_init=/bin/systemd" } if
-      over .fulloptions.free eq { pop "apt-setup/restricted=false apt-setup/multiverse=false" } if
       dup {
 	% append new option string
 	dup length fulloptions.option length add 1 add string
