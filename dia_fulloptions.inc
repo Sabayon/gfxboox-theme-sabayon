@@ -24,7 +24,7 @@
 /txt_edd_on "edd=on" def
 /txt_nodmraid "nodmraid" def
 /txt_nomodeset "nomodeset" def
-/txt_systemd "real_init=/bin/systemd" def
+/txt_systemd "Disable systemd" def
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -87,7 +87,7 @@
       over .fulloptions.edd_on eq { pop "edd=on" } if
       over .fulloptions.nodmraid eq { pop "nodmraid" } if
       over .fulloptions.nomodeset eq { pop "nomodeset" } if
-      over .fulloptions.systemd eq { pop "real_init=/bin/systemd" } if
+      over .fulloptions.systemd eq { pop "real_init=/sbin/init.d/sysvinit/init" } if
       dup {
 	% append new option string
 	dup length fulloptions.option length add 1 add string
