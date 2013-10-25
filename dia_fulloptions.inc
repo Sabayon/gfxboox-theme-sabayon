@@ -87,7 +87,7 @@
       over .fulloptions.edd_on eq { pop "edd=on" } if
       over .fulloptions.nodmraid eq { pop "nodmraid" } if
       over .fulloptions.nomodeset eq { pop "nomodeset" } if
-      over .fulloptions.systemd eq { pop "real_init=/sbin/init.d/sysvinit/init" } if
+      over .fulloptions.systemd eq { pop "real_init=/sbin/init.d/sysvinit/final/init" } if
       dup {
 	% append new option string
 	dup length fulloptions.option length add 1 add string
