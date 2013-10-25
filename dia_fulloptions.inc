@@ -14,7 +14,7 @@
 /.fulloptions.edd_on 4 def
 /.fulloptions.nodmraid 5 def
 /.fulloptions.nomodeset 6 def
-/.fulloptions.systemd 7 def
+/.fulloptions.virtio 7 def
 
 % These strings are intentionally not translatable.
 /txt_expert "verbose debug" def
@@ -24,7 +24,7 @@
 /txt_edd_on "edd=on" def
 /txt_nodmraid "nodmraid" def
 /txt_nomodeset "nomodeset" def
-/txt_systemd "Disable systemd" def
+/txt_virtio "Enable virtio" def
 
 
 % - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -43,7 +43,7 @@
     /.fulloptions.edd_on dec
     /.fulloptions.nodmraid dec
     /.fulloptions.nomodeset dec
-    /.fulloptions.systemd dec
+    /.fulloptions.virtio dec
     /.fulloptions.free dec
     xmenu .xm_current .fulloptions.acpi_off put
   } {
@@ -52,7 +52,7 @@
 
   xmenu .xm_list [
     /txt_expert /txt_acpi_off /txt_noapic /txt_nolapic /txt_edd_on /txt_nodmraid
-    /txt_nomodeset /txt_systemd
+    /txt_nomodeset /txt_virtio
   ] put
 
   xmenu .xm_title /txt_other_options put
@@ -87,7 +87,7 @@
       over .fulloptions.edd_on eq { pop "edd=on" } if
       over .fulloptions.nodmraid eq { pop "nodmraid" } if
       over .fulloptions.nomodeset eq { pop "nomodeset" } if
-      over .fulloptions.systemd eq { pop "real_init=/sbin/init.d/sysvinit/final/init" } if
+      over .fulloptions.virtio eq { pop "dovirtio" } if
       dup {
 	% append new option string
 	dup length fulloptions.option length add 1 add string
